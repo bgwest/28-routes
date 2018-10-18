@@ -38,7 +38,7 @@ class App extends React.Component {
                  render={(props) => <CreationForm {...props}
                  handleCreateBlogPost={this.handleCreateBlogPost}
                   blogposts={this.state.blogposts}/>}/>
-          <Route exact={true} path="/listcreations"
+          <Route exact={true} path="/managenotes"
                  render={(props) => <ListCreations {...props}
                  blogposts={this.state.blogposts}/>}/>
         </div>

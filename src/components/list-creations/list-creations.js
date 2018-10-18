@@ -1,6 +1,9 @@
 import React from "react";
 import uuid from "uuid/v4";
 
+import DeleteNote from '../delete-note/delete-note';
+import EditNote from '../edit-note/edit-note';
+
 class ListCreations extends React.Component {
   constructor(props) {
     super(props);
@@ -25,11 +28,22 @@ class ListCreations extends React.Component {
                 <br />
                 {currentBlogPost.body}
                 <br />
+                <DeleteNote/>
+                <EditNote/>
               </li>
             })
-          }
+            }
         </ul>
     );
+  };
+
+  renderLikes = () => {
+        if(this.state.blogposts.length > 0) {
+          return <p className="listCreations">Total Likes: {this.calculateTotalPrice()} </p>
+        } // else
+        if(this.state.blogposts.length === 0) {
+          return <p>Empty. Get to creating! :=)</p>
+        }
   };
 
   calculateTotalPrice = () => {
@@ -42,9 +56,8 @@ class ListCreations extends React.Component {
     return (
         <section className="listCreationsSelection">
           <h2 className="listCreations">Blog Posts</h2>
-          <p className="listCreations">Here is a list of all your blogposts so far:</p>
           {this.renderBlogPosts()}
-          <p className="listCreations">Likes: {this.calculateTotalPrice()} </p>
+          {this.renderLikes()}
         </section>
     );
   }

@@ -12,6 +12,9 @@ SPA (Single Page Application) accomplished using React and React DOM Router.
 * state is passed to App
 * App distributes to needed components
 
+Cheers to this post for helping me pass props to CreationForm using the React DOM Router:
+https://tylermcginnis.com/react-router-pass-props-to-components/
+
 ### How To
 
 ##### Start react app and refresh actively
@@ -20,20 +23,11 @@ SPA (Single Page Application) accomplished using React and React DOM Router.
 npm run watch
 ```
 
-### Current State Of SPA
-
-Currently, the structure is in place and props are being passed from CreationForm to App.
-
-However, having issues getting state to pass back to list-creations. I think I am really close. 
-
-Cheers to this post for helping me pass props to CreationForm using the React DOM Router:
-https://tylermcginnis.com/react-router-pass-props-to-components/
-
 ### Bugs
 
 Current Bugs: 
 
-* Site is not fully functional see "Current State Of SPA" above
+* Blog post is not wrapping properly
  
 
 ### Tests Performed with Jest

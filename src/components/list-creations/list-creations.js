@@ -42,7 +42,6 @@ class ListCreations extends React.Component {
     return (
         <section className="listCreationsSelection">
           <h2 className="listCreations">Blog Posts</h2>
-          <p className="listCreations">Add new Expense</p>
           <p className="listCreations">Here is a list of all your blogposts so far:</p>
           {this.renderBlogPosts()}
           <p className="listCreations">Likes: {this.calculateTotalPrice()} </p>

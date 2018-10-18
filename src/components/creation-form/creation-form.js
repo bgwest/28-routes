@@ -34,11 +34,13 @@ class CreationForm extends React.Component {
               value={this.state.title}
               onChange={this.handleChange}
           />
+          <br />
           <textarea rows="4" cols="50"
                     name="body" form="usrform"
                     value={this.state.body} onChange={this.handleChange}
                     placeholder="write blog...">
           </textarea>
+          <br />
           <input
               type="number"
               name="likes"

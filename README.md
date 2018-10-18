@@ -1,56 +1,63 @@
-![cf](http://i.imgur.com/7v5ASc8.png) 28: To Do
-===
+# 28: Frontend routing
 
-## Submission Instructions
-  * Work in a fork of this repository
-  * Work in a branch on your fork
-  * Submit a pull request to this repository
-  * Submit a link to your pull request on canvas
-  * Submit a question, observation, and how long you spent on canvas  
-	* Attach a picture of your state/props map
+## Overview
 
-## Requirements  
- 
-#### Feature Tasks 
-Create the following components and structure them according to the following diagram.  
-``` 
-App
-  Landing
-  Dashboard
-    NoteCreateForm
-    NoteList
-      Noteitem (Optional)
+SPA (Single Page Application) accomplished using React and React DOM Router.
+
+#### Features
+
+* Dashboard remains on screen as the sites UI
+* create blog post (note)
+* view blog post (notes)
+* state is passed to App
+* App distributes to needed components
+
+### How To
+
+##### Start react app and refresh actively
+
 ```
-###### App Component
-* The App component should manage the frontend routes and have a navbar
-* the `/` route should display the `Landing` component
-* the `/dashboard` route should display the `Dashboard` component
+npm run watch
+```
 
-###### Landing Component
-* The Landing component should display a brief description of the notes app
+### Current State Of SPA
 
-###### Dashboard Component 
-* The Dashboard component should manage the entire **application state**
-* The state should contain a notes array
-* It should have a bound `addNote(note)` method that adds a note to `state.notes`
-  * each note that gets added should have the following data
-    * `id`: always should contain the result of `uuid.v1()`
-    * `editing`: false by default
-    * `completed`: false by default
-    * `content`: user provided content
-    * `title`: user provided title
-* It should have a bound `removeNote(note)` method that removes a note from `state.notes` based on its `id`
+Currently, the structure is in place and props are being passed from CreationForm to App.
 
-###### NoteForm Component
-* `onComplete` the NoteForm should add a note to the application state
+However, having issues getting state to pass back to list-creations. I think I am really close. 
 
-###### NoteList Component 
-* should display an unordered list of NoteItem components
+Cheers to this post for helping me pass props to CreationForm using the React DOM Router:
+https://tylermcginnis.com/react-router-pass-props-to-components/
 
-###### NoteItem
-* should display the notes content and title
-* should display a delete button
-  * `onClick` the note should be removed from the application state
+### Bugs
 
-#### Documentation  
-Write a description of the project in your README.md
+Current Bugs: 
+
+* Site is not fully functional see "Current State Of SPA" above
+ 
+
+### Tests Performed with Jest
+
+###### testing app.js
+
+##### myfile.js
+
+###### travis and jest will be integrated in future labs react labs...
+
+### Built With
+
+React, ES6, babel, eslint, etc.
+
+** Please see package.json to confirm dependency details.
+
+### Contributing
+
+Please feel free to contribute. Master branch auto merge locked for approval for non-contributors.
+
+### Version
+
+In Development
+
+### Authors
+
+![CF](http://i.imgur.com/7v5ASc8.png) **Benjamin West** 

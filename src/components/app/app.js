@@ -2,12 +2,13 @@ import "@babel/polyfill";
 import React from 'react';
 import uuid from "uuid/v4";
 
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import About from '../about/about';
 import Dashboard from '../dashboard/dashboard';
 import Landing from '../landing/landing';
 import CreationForm from '../creation-form/creation-form';
 import ListCreations from '../list-creations/list-creations';
+import EditNote from "../edit-note/edit-note";
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +28,21 @@ class App extends React.Component {
     });
   };
 
+  handleUpdateBlogPost = (updatedBlog) => {
+    return this.setState((previousState) => {
+      return { blogposts: previousState.blogposts.map(function (previousBlog) {
+        if (previousBlog.id === updatedBlog.id) {
+          console.log('note updated. check app state.');
+          return updatedBlog;
+        }
+        if (previousBlog.id !== updatedBlog.id) {
+          return previousBlog;
+        }
+      })
+    }
+    })
+  };
+
   render() {
     return (
         <BrowserRouter>
@@ -37,10 +53,17 @@ class App extends React.Component {
           <Route exact={true} path="/newnote"
                  render={(props) => <CreationForm {...props}
                  handleCreateBlogPost={this.handleCreateBlogPost}
-                  blogposts={this.state.blogposts}/>}/>
+                  blogposts={this.state.blogposts}
+                 />}
+          />
+          { /* passing handleCreateBlogPost to list creations for EditNote... */ }
           <Route exact={true} path="/managenotes"
                  render={(props) => <ListCreations {...props}
-                 blogposts={this.state.blogposts}/>}/>
+                 handleUpdateBlogPost={this.handleUpdateBlogPost}
+                 blogposts={this.state.blogposts}
+                 />}
+          />
+          { /* <Route exact={true} path="/editnote" handleUpdateBlogPost={this.handleUpdateBlogPost} component={EditNote}/> */ }
         </div>
         </BrowserRouter>
     );

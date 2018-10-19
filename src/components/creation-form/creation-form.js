@@ -20,7 +20,6 @@ class CreationForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.props);
     this.props.handleCreateBlogPost(this.state);
   };
 

@@ -1,6 +1,6 @@
 import "@babel/polyfill";
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Dashboard extends React.Component {
 

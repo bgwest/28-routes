@@ -1,3 +1,6 @@
+# ignore local test file.js
+testing123.js
+
 # do not store images in github
 src/lib/assets/picture-storage/
 

@@ -3,6 +3,7 @@ import uuid from "uuid/v4";
 
 import DeleteNote from '../delete-note/delete-note';
 import EditNote from '../edit-note/edit-note';
+import {Link} from "react-router-dom";
 
 class ListCreations extends React.Component {
   constructor(props) {
@@ -13,7 +14,6 @@ class ListCreations extends React.Component {
     this.state.blogposts = this.props.blogposts.map((blog) => {
       return blog;
     }) || 'null';
-    console.log(this.props);
 
   }
 
@@ -22,14 +22,19 @@ class ListCreations extends React.Component {
         <ul>
           {
             this.state.blogposts.map((currentBlogPost) => {
-              console.log(currentBlogPost);
               return <li className="listCreationsLI" key={currentBlogPost.id}>
                 {currentBlogPost.title}
                 <br />
                 {currentBlogPost.body}
                 <br />
-                <DeleteNote/>
-                <EditNote/>
+                <DeleteNote blogpost={currentBlogPost}/>
+                { /* passing prop method from App to editnote for blogpost edit update/callback*/ }
+
+                { /* the below line resulted in react telling me this is not allowed and refused to render */}
+                { /* currentBlogPost.handleUpdateBlogPost = this.props.handleUpdateBlogPost */ }
+
+                { /* <Link to={{pathname: '/editnote', state: { currentBlogPost }}} params={{test: 1}}>edit</Link> */ }
+                <EditNote currentBlogPost={currentBlogPost} handleUpdateBlogPost={this.props.handleUpdateBlogPost}/>
               </li>
             })
             }

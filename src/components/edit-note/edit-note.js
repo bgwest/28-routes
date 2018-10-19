@@ -1,16 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
-class CreationForm extends React.Component {
-  constructor(props) {
+class EditNote extends React.Component {
+  constructor(props){
     super(props);
-
-    this.state = {
-      title: '',
-      body: '',
-      likes: 0,
-    };
+    // should never be 'null'... if it is there is a problem
+    // this.state = this.props.location.state.currentBlogPost || 'first render';
+    this.state = this.props.currentBlogPost;
   }
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -20,12 +18,18 @@ class CreationForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.handleCreateBlogPost(this.state);
+    this.props.handleUpdateBlogPost(this.state);
   };
 
-  render() {
-    return (
-        <form className="creationForm" onSubmit={this.handleSubmit}>
+  renderNoteHeader = () => {
+    if (this.state) {
+      return <h1 className="listCreationsSelection">Edit Note</h1>
+    }
+  };
+
+  handleRenderEditForm = () => {
+    if (this.state) {
+      return <form className="creationForm" onSubmit={this.handleSubmit}>
           <input
               type="text"
               name="title"
@@ -48,15 +52,20 @@ class CreationForm extends React.Component {
               onChange={this.handleChange}
           />
           <br />
-          <button className="submitButton" type="submit">Create Post</button>
+          <button className="submitButton" type="submit">Update</button>
         </form>
+    }
+
+  };
+
+  render() {
+    return (
+        <section>
+          {this.renderNoteHeader()}
+          {this.handleRenderEditForm()}
+        </section>
     );
   }
 }
 
-CreationForm.propTypes = {
-  handleCreateBlogPost : PropTypes.func,
-};
-
-
-export default CreationForm;
+export default EditNote;

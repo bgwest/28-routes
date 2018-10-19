@@ -1,6 +1,10 @@
 import React from "react";
 import uuid from "uuid/v4";
 
+import DeleteNote from '../delete-note/delete-note';
+import EditNote from '../edit-note/edit-note';
+import {Link} from "react-router-dom";
+
 class ListCreations extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +14,6 @@ class ListCreations extends React.Component {
     this.state.blogposts = this.props.blogposts.map((blog) => {
       return blog;
     }) || 'null';
-    console.log(this.props);
 
   }
 
@@ -19,17 +22,33 @@ class ListCreations extends React.Component {
         <ul>
           {
             this.state.blogposts.map((currentBlogPost) => {
-              console.log(currentBlogPost);
               return <li className="listCreationsLI" key={currentBlogPost.id}>
                 {currentBlogPost.title}
                 <br />
                 {currentBlogPost.body}
                 <br />
+                <DeleteNote blogpost={currentBlogPost}/>
+                { /* passing prop method from App to editnote for blogpost edit update/callback*/ }
+
+                { /* the below line resulted in react telling me this is not allowed and refused to render */}
+                { /* currentBlogPost.handleUpdateBlogPost = this.props.handleUpdateBlogPost */ }
+
+                { /* <Link to={{pathname: '/editnote', state: { currentBlogPost }}} params={{test: 1}}>edit</Link> */ }
+                <EditNote currentBlogPost={currentBlogPost} handleUpdateBlogPost={this.props.handleUpdateBlogPost}/>
               </li>
             })
-          }
+            }
         </ul>
     );
+  };
+
+  renderLikes = () => {
+        if(this.state.blogposts.length > 0) {
+          return <p className="listCreations">Total Likes: {this.calculateTotalPrice()} </p>
+        } // else
+        if(this.state.blogposts.length === 0) {
+          return <p>Empty. Get to creating! :=)</p>
+        }
   };
 
   calculateTotalPrice = () => {
@@ -42,10 +61,8 @@ class ListCreations extends React.Component {
     return (
         <section className="listCreationsSelection">
           <h2 className="listCreations">Blog Posts</h2>
-          <p className="listCreations">Add new Expense</p>
-          <p className="listCreations">Here is a list of all your blogposts so far:</p>
           {this.renderBlogPosts()}
-          <p className="listCreations">Likes: {this.calculateTotalPrice()} </p>
+          {this.renderLikes()}
         </section>
     );
   }

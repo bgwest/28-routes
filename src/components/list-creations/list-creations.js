@@ -27,7 +27,7 @@ class ListCreations extends React.Component {
                 <br />
                 {currentBlogPost.body}
                 <br />
-                <DeleteNote blogpost={currentBlogPost}/>
+                <DeleteNote blogpost={currentBlogPost} handleDeleteBlogPost={this.props.handleDeleteBlogPost}/>
                 { /* passing prop method from App to editnote for blogpost edit update/callback*/ }
 
                 { /* the below line resulted in react telling me this is not allowed and refused to render */}

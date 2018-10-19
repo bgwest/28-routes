@@ -43,6 +43,15 @@ class App extends React.Component {
     })
   };
 
+  handleDeleteBlogPost = (blogToDelete) => {
+    return this.setState((previousState) => {
+      return { blogposts: previousState.blogposts.filter(function(blog) {
+          return blog.id !== blogToDelete.id;
+        })
+      }
+    })
+  };
+
   render() {
     return (
         <BrowserRouter>
@@ -60,6 +69,7 @@ class App extends React.Component {
           <Route exact={true} path="/managenotes"
                  render={(props) => <ListCreations {...props}
                  handleUpdateBlogPost={this.handleUpdateBlogPost}
+                 handleDeleteBlogPost={this.handleDeleteBlogPost}
                  blogposts={this.state.blogposts}
                  />}
           />

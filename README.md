@@ -2,18 +2,19 @@
 
 ## Overview
 
-SPA (Single Page Application) accomplished using React and React DOM Router.
+A simple React blog post SPA (Single Page Application) with React DOM Router.
 
 #### Features
 
-* Dashboard remains on screen as the sites UI
-* create blog post (note)
-* view blog post (notes)
-* state is passed to App
-* App distributes to needed components
+* create blog post ("New Note")
+* view your blog posts ("Manage Notes")
 
-Cheers to this post for helping me pass props to CreationForm using the React DOM Router:
-https://tylermcginnis.com/react-router-pass-props-to-components/
+* edit your blog post after it is created in manage notes
+* delete your blog post after it is created in manage notes
+
+* Dashboard remains on screen as the sites UI
+* all blogpost state is passed to App
+* App distributes to needed components
 
 ### How To
 
@@ -27,8 +28,12 @@ npm run watch
 
 Current Bugs: 
 
-* Blog post is not wrapping properly
+* On "Manage Notes" route, when "delete" is clicked your note gets deleted but it does not trigger a react fresh. Currently, a way to see that your note is deleted is to click on another page on the site (e.g. "Home") and then return to "Manage notes". The note will then show as deleted.
  
+ #### Shoutouts
+ 
+ Cheers to this post for helping me pass props to CreationForm using the React DOM Router:
+ https://tylermcginnis.com/react-router-pass-props-to-components/
 
 ### Tests Performed with Jest
 
@@ -40,7 +45,7 @@ Current Bugs:
 
 ### Built With
 
-React, ES6, babel, eslint, etc.
+React, React-dom-router, ES6, babel, eslint, webpack, etc.
 
 ** Please see package.json to confirm dependency details.
 

@@ -20,7 +20,14 @@ class CreationForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    // send state back to master to update and return fresh object for creation in this component
     this.props.handleCreateBlogPost(this.state);
+    return this.setState((previousState) => {
+      return previousState = { title: '',
+          body: '',
+          likes: 0,
+      };
+    });
   };
 
   render() {

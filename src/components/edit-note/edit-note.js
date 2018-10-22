@@ -52,7 +52,7 @@ class EditNote extends React.Component {
               onChange={this.handleChange}
           />
           <br />
-          <button className="submitButton" type="submit">Update</button>
+          <button className="submitButton" type="submit">update</button>
         </form>
     }
 

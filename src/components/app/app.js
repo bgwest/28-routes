@@ -2,7 +2,7 @@ import "@babel/polyfill";
 import React from 'react';
 import uuid from "uuid/v4";
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import About from '../about/about';
 import Dashboard from '../dashboard/dashboard';
 import Landing from '../landing/landing';

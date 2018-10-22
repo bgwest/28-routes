@@ -22,12 +22,10 @@ class ListCreations extends React.Component {
         <ul>
           {
             this.state.blogposts.map((currentBlogPost) => {
-              return <li className="listCreationsLI" key={currentBlogPost.id}>
-                {currentBlogPost.title}
-                <br />
+              return <section className="listCreationsLI" key={currentBlogPost.id}>
+                <p>Title: <br />{currentBlogPost.title}</p>
                 {currentBlogPost.body}
                 <br />
-                <DeleteNote blogpost={currentBlogPost} handleDeleteBlogPost={this.props.handleDeleteBlogPost}/>
                 { /* passing prop method from App to editnote for blogpost edit update/callback*/ }
 
                 { /* the below line resulted in react telling me this is not allowed and refused to render */}
@@ -35,7 +33,8 @@ class ListCreations extends React.Component {
 
                 { /* <Link to={{pathname: '/editnote', state: { currentBlogPost }}} params={{test: 1}}>edit</Link> */ }
                 <EditNote currentBlogPost={currentBlogPost} handleUpdateBlogPost={this.props.handleUpdateBlogPost}/>
-              </li>
+                <DeleteNote blogpost={currentBlogPost} handleDeleteBlogPost={this.props.handleDeleteBlogPost}/>
+              </section>
             })
             }
         </ul>
@@ -47,7 +46,7 @@ class ListCreations extends React.Component {
           return <p className="listCreations">Total Likes: {this.calculateTotalPrice()} </p>
         } // else
         if(this.state.blogposts.length === 0) {
-          return <p>Empty. Get to creating! :=)</p>
+          return <p>Empty. Get to creating! :-)</p>
         }
   };
 

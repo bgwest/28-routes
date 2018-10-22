@@ -1,4 +1,4 @@
-# 28: Frontend routing
+# 29: Component Composition 
 
 ## Overview
 
